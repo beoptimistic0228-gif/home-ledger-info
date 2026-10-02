@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="home-ledger의 Google 로그인, 가계부 자료와 Google Drive 백업에 관한 개인정보 처리 안내입니다.">
+  <title>개인정보 처리 안내 | home-ledger</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; color: #183a35; background: #f7faf8; }
+    body { margin: 0; line-height: 1.8; }
+    main { max-width: 720px; margin: 0 auto; padding: 40px 24px; }
+    h1 { font-size: clamp(1.8rem, 5vw, 2.5rem); line-height: 1.4; }
+    h2 { font-size: 1.2rem; margin-top: 32px; }
+    p, ul { margin: 12px 0; }
+    a { color: #006b55; text-underline-offset: .2em; }
+    a:focus-visible { outline: 3px solid #006b55; outline-offset: 4px; }
+    footer { border-top: 1px solid #ccd9d3; margin-top: 36px; padding-top: 20px; font-size: .9rem; }
+  </style>
+</head>
+<body>
+<main>
+  <nav aria-label="페이지 이동"><a href="index.html">가계부 소개</a></nav>
+  <h1>개인정보 처리 안내</h1>
+  <p>대상: home-ledger(가계부)와 운영자의 백업 연결. 최종 갱신: 2026-10-02.</p>
+  <p>운영자는 낙관(nakgwan)입니다. 이 서비스는 사전에 등록한 가족의 가계부 기록을 관리하기 위해 사용합니다.</p>
+  <section aria-labelledby="google">
+    <h2 id="google">1. Google 로그인 정보</h2>
+    <p>Google 로그인 시 계정의 고유 식별값, 이름, 이메일 주소, 프로필 이미지 등 기본 프로필 정보를 받습니다. 고유 식별값으로 등록된 가족인지 확인하고, 계정 정보를 로그인과 접근권한 관리에 사용합니다.</p>
+    <p>인증 라이브러리는 로그인 처리에 필요한 토큰과 로그인 세션을 서버의 인증 저장소에 보관할 수 있습니다. 로그인 유지와 보안을 위해 세션 쿠키, 접속 IP와 브라우저 정보가 처리될 수 있습니다. 사용자의 Google 비밀번호를 받거나 저장하지 않습니다.</p>
+    <p>가계부 로그인은 기본 프로필 권한만 요청합니다. Gmail, 연락처, 캘린더 또는 Drive 파일 접근을 로그인에 포함하지 않습니다.</p>
+  </section>
+  <section aria-labelledby="records">
+    <h2 id="records">2. 가계부 자료</h2>
+    <p>가족이 입력한 거래, 금액, 분류, 메모, 고정비, 할부, 예산과 구성원 정보를 가계부 기능에 사용합니다. 가족 공용 기록과 개인 기록은 등록된 사용자와 기록 소유권에 따라 접근을 제한합니다.</p>
+    <p>자료는 운영자가 관리하는 가계부 데이터베이스에 저장합니다. 현재 서비스 전환 과정에서는 기존 Supabase 서비스와 HQ의 PostgreSQL 환경을 사용하며, 실제 자료 이전은 별도의 확인 후 진행합니다.</p>
+  </section>
+  <section aria-labelledby="drive">
+    <h2 id="drive">3. 운영자의 Google Drive 백업 연결</h2>
+    <p>운영자가 백업 연결을 별도로 승인하면 <code>drive.file</code> 권한으로 앱이 만든 전용 폴더와 파일을 생성, 읽기, 수정하거나 삭제할 수 있습니다. 운영자의 Drive 전체 파일에 대한 접근권한은 요청하지 않습니다.</p>
+    <p>이 접근은 암호화된 가계부 백업 사본의 보관, 전송 확인과 복구에만 사용합니다. 연결을 유지하는 데 필요한 토큰은 서버의 제한된 비공개 저장소에 보관합니다. 복호화 개인키는 Drive나 백업 서버에 올리지 않습니다.</p>
+    <p>이 안내는 백업을 연결할 때 적용할 처리 방식을 설명합니다. 백업 사본의 생성이나 자동 실행이 이미 완료되었다는 뜻은 아닙니다.</p>
+  </section>
+  <section aria-labelledby="sharing">
+    <h2 id="sharing">4. 외부 서비스와 이용 제한</h2>
+    <p>Google은 로그인 인증과 승인된 Drive 백업 저장에 관여합니다. Supabase는 기존 가계부의 데이터베이스와 인증 서비스로 사용됩니다. 공개 안내 페이지는 GitHub Pages에 게시하며, GitHub는 보안 목적의 접속 로그를 처리할 수 있습니다.</p>
+    <p>운영자는 Google 사용자 정보를 판매하거나 광고 타기팅, AI 모델 학습에 사용하지 않습니다. Google 사용자 정보의 이용과 외부 서비스로의 전달은 이 안내에 적힌 로그인, 가족 가계부와 승인된 백업 목적에 한정합니다.</p>
+    <p>Google API에서 받은 정보의 이용과 전달은 <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noreferrer">Google API 서비스 사용자 데이터 정책</a>의 Limited Use 요구사항을 따릅니다.</p>
+  </section>
+  <section aria-labelledby="retention">
+    <h2 id="retention">5. 보관과 삭제 요청</h2>
+    <p>가계부 기록을 장기간 유지하기 위해 자료를 보관합니다. 계정과 자료의 삭제는 운영자에게 요청할 수 있습니다. 화면에서 거래를 삭제하는 것은 복구 가능한 삭제일 수 있으므로 완전 삭제 요청과 구분합니다.</p>
+    <p>백업의 보관 기간과 삭제 주기는 운영자가 별도로 정한 백업 정책을 따릅니다. 자료 삭제 요청을 처리할 때에는 운영 데이터와 남아 있는 백업 사본의 처리 범위도 함께 확인합니다.</p>
+    <p>Google 계정 설정에서 앱 접근권한을 취소할 수 있습니다. 권한 취소는 이후의 Google 접근을 차단하며, 이미 저장된 가계부 기록의 삭제를 뜻하지는 않습니다. 기존 자료 삭제는 별도로 요청해 주세요.</p>
+  </section>
+  <footer>
+    <p>문의, 접근권한 철회 또는 자료 삭제 요청은 운영자에게 직접 연락하거나 Google 동의 화면의 사용자 지원 이메일을 이용해 주세요.</p>
+    <p>정보 처리 방식이 달라지면 이 안내를 갱신하고 가족 이용자에게 알립니다.</p>
+    <p><a href="index.html">가계부 소개로 돌아가기</a></p>
+  </footer>
+</main>
+</body>
+</html>
